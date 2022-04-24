@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class HouseController extends Controller
 {
@@ -13,7 +14,7 @@ class HouseController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('house/Index');
     }
 
     /**
@@ -23,7 +24,7 @@ class HouseController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('house/Create');
     }
 
     /**
@@ -34,7 +35,7 @@ class HouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -45,7 +46,7 @@ class HouseController extends Controller
      */
     public function show($id)
     {
-        //
+        return Inertia::render('house/Show');
     }
 
     /**
@@ -56,7 +57,7 @@ class HouseController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Inertia::render('house/Edit');
     }
 
     /**

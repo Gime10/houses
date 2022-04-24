@@ -14,30 +14,23 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+
+Route::get('/', [\App\Http\Controllers\PageController::class, 'welcome']);
+
+// rutas bajo autorización
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-});*/
-
-Route::get('/cliente/',[App\Http\Controllers\ClienteController::class,'index'])->name('cliente');
-Route::put('/cliente/editar',[App\Http\Controllers\ClienteController::class,'edit'])->name('cliente');
-Route::delete('/cliente/eliminar',[App\Http\Controllers\ClienteController::class,'delete'])->name('cliente');
-Route::post('/cliente/nuevo',[App\Http\Controllers\ClienteController::class,'new'])->name('cliente');
-
+    // ruta dasboard
+    Route::get('/dashboard',  [\App\Http\Controllers\PageController::class, 'dasboard'])->name('dashboard');
+    // ruta cliente
+    Route::get('/cliente/', [App\Http\Controllers\ClienteController::class, 'index'])->name('cliente.index');
+    Route::put('/cliente/editar', [App\Http\Controllers\ClienteController::class, 'edit'])->name('cliente.update');
+    Route::delete('/cliente/eliminar', [App\Http\Controllers\ClienteController::class, 'delete'])->name('cliente.destroy');
+    Route::post('/cliente/nuevo', [App\Http\Controllers\ClienteController::class, 'new'])->name('cliente.store');
+});
 // rutas para houses
-Route::resource('house',App\Http\Controllers\HouseController::class);
+Route::resource('house', App\Http\Controllers\HouseController::class);
