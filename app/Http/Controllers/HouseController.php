@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\House;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,7 +15,8 @@ class HouseController extends Controller
      */
     public function index()
     {
-        return Inertia::render('house/Index');
+        $result = House::all();
+        return Inertia::render('House/Index', ['house' => $result]);
     }
 
     /**
@@ -24,7 +26,7 @@ class HouseController extends Controller
      */
     public function create()
     {
-        return Inertia::render('house/Create');
+        return Inertia::render('House/Create');
     }
 
     /**
@@ -35,7 +37,6 @@ class HouseController extends Controller
      */
     public function store(Request $request)
     {
-        
     }
 
     /**
@@ -46,7 +47,7 @@ class HouseController extends Controller
      */
     public function show($id)
     {
-        return Inertia::render('house/Show');
+        return Inertia::render('House/Show');
     }
 
     /**
@@ -57,7 +58,7 @@ class HouseController extends Controller
      */
     public function edit($id)
     {
-        return Inertia::render('house/Edit');
+        return Inertia::render('House/Edit');
     }
 
     /**
