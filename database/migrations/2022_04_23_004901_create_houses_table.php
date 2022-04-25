@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('type');
+            $table->string('city');
+            $table->string('direction');
+            $table->string('owner');
+            $table->integer('price');
+            $table->text('description');
         });
     }
 
